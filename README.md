@@ -18,6 +18,26 @@ JFleet Benchmark is a project which tries to measure the efficiency of JFleet co
 
 **JFleet performance is comparable to using the native database import tool, and is between 2.1X and 3.8X faster than using the JDBC driver directly.**
 
+## Table of Contents
+
+- [Dataset](#dataset)
+- [Hardware and Software Setup](#hardware-and-software-setup)
+    - [MySQL Setup](#mysql-setup)
+    - [PostgreSQL Setup](#postgresql-setup)
+	- [Client Setup](#client-setup)
+- [MySQL](#mysql)
+    - [MySQL JPA Batch Insert](#mysql-jpa-batch-insert)
+    - [MySQL JDBC Batch Insert](#mysql-jdbc-batch-insert)
+    - [MySQL DB Import](#mysql-db-import)
+    - [MySQL JFleet Bulk Insert](#mysql-jfleet-bulk-insert)
+    - [MySQL Comparison](#mysql-comparison)
+- [PostgreSQL](#postgresql)
+    - [PostgreSQL JPA Batch Insert](#postgresql-jpa-batch-insert)
+    - [PostgreSQL JDBC Batch Insert](#postgresql-jdbc-batch-insert)
+    - [PostgreSQL DB Import](#postgresql-db-import)
+    - [PostgreSQL JFleet Bulk Insert](#postgresql-jfleet-bulk-insert)
+    - [PostgreSQL Comparison](#postgresql-comparison)
+
 ## Dataset
 
 The selected dataset is a public dataset provided by Citi Bike NYC about each trip with their bikes.
