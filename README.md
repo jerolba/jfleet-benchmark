@@ -24,7 +24,7 @@ JFleet Benchmark is a project which tries to measure the efficiency of JFleet co
 - [Hardware and Software Setup](#hardware-and-software-setup)
     - [MySQL Setup](#mysql-setup)
     - [PostgreSQL Setup](#postgresql-setup)
-	- [Client Setup](#client-setup)
+    - [Client Setup](#client-setup)
 - [MySQL](#mysql)
     - [MySQL JPA Batch Insert](#mysql-jpa-batch-insert)
     - [MySQL JDBC Batch Insert](#mysql-jdbc-batch-insert)
@@ -37,6 +37,7 @@ JFleet Benchmark is a project which tries to measure the efficiency of JFleet co
     - [PostgreSQL DB Import](#postgresql-db-import)
     - [PostgreSQL JFleet Bulk Insert](#postgresql-jfleet-bulk-insert)
     - [PostgreSQL Comparison](#postgresql-comparison)
+
 
 ## Dataset
 
@@ -67,45 +68,45 @@ The client was located in the same zone as the servers with the following config
 ![Client Setup](doc/ClientSetup.png "Client Setup")
 
 The Java runtime used was JDK 8u161.
+
+
 ## MySQL
 
 ### MySQL JPA Batch Insert
 
-|Iteration|100 Rows|500 Rows|1000 Rows|5000 Rows|
+|Iteration|500 Rows|1000 Rows|5000 Rows|10000 Rows|
 |----:|----:|----:|----:|----:|
-|1|747|~~660~~|691|~~766~~|
-|2|~~732~~|655|691|765|
-|3|737|652|~~684~~|755|
-|4|744|653|688|747|
-|5|740|656|694|751|
-|6|746|~~648~~|685|~~742~~|
-|7|733|649|685|743|
-|8|740|651|688|749|
-|9|~~761~~|655|~~696~~|750|
-|10|739|650|689|752|
-|**Avg. Sec.**|**741**|**653**|**689**|**752**|
-|**Avg. row/sec**|**18,691**|**21,215**|**20,099**|**18,424**|
+|1|~~1,121~~|~~989~~|831|~~775~~|
+|2|1,121|994|~~821~~|781|
+|3|1,134|1,006|832|781|
+|4|1,139|1,024|848|795|
+|5|~~1,175~~|1,016|842|794|
+|6|1,152|1,029|872|811|
+|7|1,148|1,031|~~882~~|824|
+|8|1,168|1,046|873|~~841~~|
+|9|1,171|~~1,051~~|872|818|
+|10|1,159|1,047|873|813|
+|**Avg. Sec.**|**1,149**|**1,024**|**855**|**802**|
+|**Avg. row/sec**|**12,050**|**13,519**|**16,187**|**17,261**|
 
 [![mysql JPA Batch Insert](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=434745884&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=434745884&format=interactive)
 
 ### MySQL JDBC Batch Insert
 
-|Iteration|100 Rows|500 Rows|1000 Rows|5000 Rows|
+|Iteration|500 Rows|1000 Rows|5000 Rows|10000 Rows|
 |----:|----:|----:|----:|----:|
-|1|1,244|661|593|565|
-|2|1,274|670|609|583|
-|3|1,288|684|611|572|
-|4|1,275|679|612|582|
-|5|1,277|680|603|~~598~~|
-|6|1,276|681|608|582|
-|7|1,244|674|~~624~~|584|
-|8|~~1,328~~|~~713~~|611|572|
-|9|1,274|671|596|562|
-|10|~~1,237~~|~~658~~|~~591~~|~~560~~|
-|**Avg. Sec.**|**1,269**|**675**|**605**|**575**|
-|**Avg. row/sec**|**10,911**|**20,512**|**22,871**|**24,069**|
-
-[![mysql JDBC Batch Insert](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=200889394&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=200889394&format=interactive)
+|1|~~638~~|583|~~550~~|~~562~~|
+|2|652|579|555|565|
+|3|660|571|555|566|
+|4|650|581|557|566|
+|5|~~680~~|577|554|570|
+|6|638|~~559~~|551|564|
+|7|656|~~595~~|567|582|
+|8|660|589|~~569~~|586|
+|9|662|590|567|583|
+|10|654|585|565|~~589~~|
+|**Avg. Sec.**|**654**|**582**|**559**|**573**|
+|**Avg. row/sec**|**21,171**|**23,795**|**24,774**|**24,174**|
 
 ### MySQL DB Import
 
@@ -150,8 +151,8 @@ The Java runtime used was JDK 8u161.
 
 ||Best Time|Best row/sec|
 |-----|----:|----:|
-|JPA Batch Insert|653|21,215|
-|JDBC Batch Insert|575|24,069|
+|JPA Batch Insert|802|17,261|
+|JDBC Batch Insert|559|24,774|
 |DB Import|143|96,907|
 |JFleet Bulk Insert|149|92,691|
 
@@ -162,41 +163,39 @@ The Java runtime used was JDK 8u161.
 
 ### PostgreSQL JPA Batch Insert
 
-|Iteration|100 Rows|500 Rows|1000 Rows|5000 Rows|
+|Iteration|500 Rows|1000 Rows|5000 Rows|10000 Rows|
 |----:|----:|----:|----:|----:|
-|1|882|~~438~~|~~441~~|477|
-|2|862|~~369~~|~~374~~|469|
-|3|915|405|399|475|
-|4|~~950~~|406|398|480|
-|5|940|413|409|~~514~~|
-|6|891|402|394|480|
-|7|859|390|398|494|
-|8|857|387|380|462|
-|9|~~835~~|375|384|~~451~~|
-|10|841|385|389|453|
-|**Avg. Sec.**|**881**|**395**|**394**|**474**|
-|**Avg. row/sec**|**15,718**|**35,019**|**35,152**|**29,226**|
+|1|1,276|948|631|~~584~~|
+|2|~~1,350~~|~~979~~|~~608~~|560|
+|3|1,313|967|631|564|
+|4|~~1,268~~|945|616|~~544~~|
+|5|1,346|974|631|574|
+|6|1,292|952|630|570|
+|7|1,286|~~942~~|622|563|
+|8|1,291|944|617|549|
+|9|1,290|957|642|566|
+|10|1,314|972|~~645~~|563|
+|**Avg. Sec.**|**1,301**|**957**|**628**|**564**|
+|**Avg. row/sec**|**10,642**|**14,462**|**22,065**|**24,565**|
 
 [![postgres JPA Batch Insert](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1290107757&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1290107757&format=interactive)
 
 ### PostgreSQL JDBC Batch Insert
 
-|Iteration|100 Rows|500 Rows|1000 Rows|5000 Rows|
+|Iteration|500 Rows|1000 Rows|5000 Rows|10000 Rows|
 |----:|----:|----:|----:|----:|
-|1|1,030|365|337|~~347~~|
-|2|1,033|368|335|328|
-|3|1,037|371|333|324|
-|4|~~1,039~~|373|336|326|
-|5|1,032|364|~~330~~|~~321~~|
-|6|1,018|366|333|322|
-|7|1,018|~~362~~|331|323|
-|8|~~1,010~~|~~385~~|~~340~~|328|
-|9|1,018|364|331|347|
-|10|1,023|362|331|329|
-|**Avg. Sec.**|**1,026**|**367**|**333**|**328**|
-|**Avg. row/sec**|**13,493**|**37,765**|**41,532**|**42,164**|
-
-[![postgres JDBC Batch Insert](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1563329639&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1563329639&format=interactive)
+|1|363|317|~~314~~|337|
+|2|~~367~~|~~330~~|~~340~~|~~345~~|
+|3|353|316|320|337|
+|4|355|318|322|340|
+|5|359|325|325|344|
+|6|355|324|324|335|
+|7|~~350~~|316|319|331|
+|8|350|~~313~~|322|336|
+|9|350|316|316|~~323~~|
+|10|355|319|323|345|
+|**Avg. Sec.**|**355**|**319**|**321**|**338**|
+|**Avg. row/sec**|**39,002**|**43,420**|**43,083**|**40,948**|
 
 ### PostgreSQL DB Import
 
@@ -241,11 +240,10 @@ The Java runtime used was JDK 8u161.
 
 ||Best Time|Best row/sec|
 |-----|----:|----:|
-|JPA Batch Insert|394|35,152|
-|JDBC Batch Insert|328|42,164|
+|JPA Batch Insert|564|24,565|
+|JDBC Batch Insert|319|43,420|
 |DB Import|155|89,183|
 |JFleet Bulk Insert|150|92,458|
 
 
 [![postgres Comparison](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1970047048&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1970047048&format=interactive)
-
