@@ -81,6 +81,8 @@ public class JpaBatchInsert {
                         LOGGER.info("Flushing. Total elements " + cont);
                         entityManager.flush();
                         entityManager.clear();
+                        entityManager.getTransaction().commit();
+                        entityManager.getTransaction().begin();
                     }
                 }
                 entityManager.flush();
