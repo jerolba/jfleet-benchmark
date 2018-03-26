@@ -108,6 +108,8 @@ The Java runtime used was JDK 8u161.
 |**Avg. Sec.**|**654**|**582**|**559**|**573**|
 |**Avg. row/sec**|**21,171**|**23,795**|**24,774**|**24,174**|
 
+[![mysql JDBC Batch Insert](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=200889394&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=200889394&format=interactive)
+
 ### MySQL DB Import
 
 |Iteration|1 Import|
@@ -196,6 +198,8 @@ The Java runtime used was JDK 8u161.
 |10|355|319|323|345|
 |**Avg. Sec.**|**355**|**319**|**321**|**338**|
 |**Avg. row/sec**|**39,002**|**43,420**|**43,083**|**40,948**|
+
+[![postgres JDBC Batch Insert](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1563329639&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1563329639&format=interactive)
 
 ### PostgreSQL DB Import
 
