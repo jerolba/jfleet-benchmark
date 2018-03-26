@@ -14,6 +14,7 @@ dependencies {
     compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.10.Final'
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '2.7.8'    
 }
 
 mainClassName = 'org.jfleet.benchmark.Baseline'

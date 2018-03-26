@@ -20,9 +20,7 @@ import java.util.function.Supplier;
 
 import javax.sql.DataSource;
 
-import org.postgresql.ds.PGSimpleDataSource;
-
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import com.zaxxer.hikari.HikariDataSource;
 
 public class DataSourceFactory extends DatabaseProperties implements Supplier<DataSource> {
 
@@ -36,22 +34,11 @@ public class DataSourceFactory extends DatabaseProperties implements Supplier<Da
 
     @Override
     public DataSource get() {
-        DatabaseType databaseType = getDatabaseType();
-        if (databaseType == DatabaseType.mysql) {
-            MysqlDataSource mysqlds = new MysqlDataSource();
-            mysqlds.setUrl(prop.get("urlConnection"));
-            mysqlds.setUser(prop.get("user"));
-            mysqlds.setPassword(prop.get("password"));
-            return mysqlds;
-        }
-        if (databaseType == DatabaseType.postgres) {
-            PGSimpleDataSource pgds = new PGSimpleDataSource();
-            pgds.setUrl(prop.get("urlConnection"));
-            pgds.setUser(prop.get("user"));
-            pgds.setPassword(prop.get("password"));
-            return pgds;
-        }
-        throw new RuntimeException("Datasource not found");
+        HikariDataSource ds = new HikariDataSource();
+        ds.setJdbcUrl(prop.get("urlConnection"));
+        ds.setUsername(prop.get("user"));
+        ds.setPassword(prop.get("password"));
+        return ds;
     }
 
     public DatabaseType getDatabaseType() {
