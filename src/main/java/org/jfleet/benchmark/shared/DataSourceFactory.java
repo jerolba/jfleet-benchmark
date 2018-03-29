@@ -35,6 +35,7 @@ public class DataSourceFactory extends DatabaseProperties implements Supplier<Da
     @Override
     public DataSource get() {
         HikariDataSource ds = new HikariDataSource();
+        ds.setDriverClassName(prop.get("driver"));
         ds.setJdbcUrl(prop.get("urlConnection"));
         ds.setUsername(prop.get("user"));
         ds.setPassword(prop.get("password"));
