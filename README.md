@@ -25,6 +25,7 @@ JFleet Benchmark is a project which tries to measure the efficiency of JFleet co
     - [MySQL Setup](#mysql-setup)
     - [PostgreSQL Setup](#postgresql-setup)
     - [Client Setup](#client-setup)
+- [Benchmark methodology](#benchmark-methodology)    
 - [MySQL](#mysql)
     - [MySQL JPA Batch Insert](#mysql-jpa-batch-insert)
     - [MySQL JDBC Batch Insert](#mysql-jdbc-batch-insert)
@@ -41,17 +42,25 @@ JFleet Benchmark is a project which tries to measure the efficiency of JFleet co
 
 ## Dataset
 
-The selected dataset is a public dataset provided by Citi Bike NYC about each trip with their bikes.
+The selected dataset is a public dataset provided by [Citi Bike NYC](https://www.citibikenyc.com/system-data) about each trip with their bikes.
 
 The dataset can be downloaded from: https://s3.amazonaws.com/tripdata/index.html, and the [selected range](/downloadDataset.sh) of files are the whole 2016 year, with 457 MB of compressed CSVs files (2478 MB uncompressed). There are 13,845,655 rows in the dataset with an average size of 180 bytes per record.
 
 Depending on the database engine, the total space used in database is around 2500 MB, using an average of 110 bytes per record.
 
+Each record contains a mix of data types:
+ - 4 Integer
+ - 4 Doubles
+ - 3 Strings 
+ - 2 Dates
+ - 1 Long
+ - 1 Char
+
 ## Hardware and Software Setup
 
 All test has been executed under Google Cloud Platform using Cloud SQL fully-managed database service.
 
-Both databases has the same hardware configuration:
+Both databases has the same hardware configuration, and no change has been done in their default setup provided by Google Cloud.
 
 ### MySQL Setup
 
@@ -69,7 +78,20 @@ The client was located in the same zone as the servers with the following config
 
 The Java runtime used was JDK 8u161.
 
+## Benchmark methodology
 
+The benchmark only tries to measure the efficiency of JFleet comparing with different persistence techniques, and is not a comparasion between database engines.
+
+The benchmark is not executed in a production like environment and only executes inserts, without any other type of concurrent access or queries which can affect to the database performance. **Results can not be used as a reference for your production system, and you must execute yours to evaluate the convenience of JFleet.**
+  
+ - The benchmark measures the total time in seconds spent from the first byte read from dataset, to the last commit
+ - A commit is executed after each batch operation
+ - 13,845,655 rows are inserted in each benchmark execution
+ - Each test is executed 10 times
+ - The best and the worst results are discarded
+ - Charts represent rows per second (more is better)
+
+ 
 ## MySQL
 
 ### MySQL JPA Batch Insert
@@ -111,6 +133,8 @@ The Java runtime used was JDK 8u161.
 [![mysql JDBC Batch Insert](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=200889394&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=200889394&format=interactive)
 
 ### MySQL DB Import
+
+The selected `mysqldump` format is [tab-separated text](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tab) which is more performant than the standard with INSERT sentences.  
 
 |Iteration|1 Import|
 |----:|----:|
@@ -251,4 +275,5 @@ The Java runtime used was JDK 8u161.
 
 
 [![postgres Comparison](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1970047048&format=image)](https://docs.google.com/spreadsheets/d/e/2PACX-1vTx61C0YNYlczo0S-ZTN56FH2mxvHPHf4jamTnY4wdMwjjF3TvxcW3Ti7VR83dd1R5EznB7xVhD1HD6/pubchart?oid=1970047048&format=interactive)
+
 
